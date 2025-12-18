@@ -79,40 +79,49 @@ const Dashboard = () => {
     e.preventDefault();
     setRechargeProgress(true);
     
+    const rechargeData = {
+      planName: selectedPlan.name,
+      amount: selectedPlan.amount,
+      phoneNumber: rechargeForm.phoneNumber,
+      operator: rechargeForm.operator
+    };
+    
+    console.log('🔄 Processing recharge:', rechargeData);
+    console.log('🌐 API URL:', 'http://localhost:5002/api/recharge/simple');
+    
     try {
-      const token = localStorage.getItem('authToken');
-      const response = await fetch('http://localhost:5002/api/recharge', {
+      const response = await fetch('http://localhost:5002/api/recharge/simple', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          planName: selectedPlan.name,
-          amount: selectedPlan.amount,
-          phoneNumber: rechargeForm.phoneNumber,
-          operator: rechargeForm.operator
-        })
+        body: JSON.stringify(rechargeData)
       });
       
+      console.log('📡 Response status:', response.status);
+      console.log('📡 Response headers:', response.headers);
+      
       if (response.ok) {
+        const result = await response.json();
+        console.log('✅ Recharge successful:', result);
+        
         const rechargeToken = generateRechargeToken();
         const transactionId = generateTransactionId();
         const referenceNumber = generateReferenceNumber();
         
         alert(`✅ Recharge Successful!\n\n📱 Plan: ${selectedPlan.name}\n💰 Amount: ₹${selectedPlan.amount}\n📞 Phone: ${rechargeForm.phoneNumber}\n📡 Operator: ${rechargeForm.operator}\n\n🎫 Recharge Token: ${rechargeToken}\n🔢 Transaction ID: ${transactionId}\n📋 Reference: ${referenceNumber}\n\n⏰ Date: ${new Date().toLocaleString('en-IN')}`);
         
-        // Refresh recharge history
         window.dispatchEvent(new CustomEvent('rechargeCompleted'));
-        
         setShowRechargeModal(false);
         setRechargeForm({ phoneNumber: '', operator: 'Airtel' });
       } else {
-        alert('Recharge failed. Please try again.');
+        const errorData = await response.json();
+        console.error('❌ Server error:', errorData);
+        alert(`Recharge failed: ${errorData.message || 'Unknown error'}`);
       }
     } catch (error) {
-      console.error('Recharge error:', error);
-      alert('Recharge failed. Please try again.');
+      console.error('❌ Network error:', error);
+      alert(`Network error: ${error.message}`);
     } finally {
       setRechargeProgress(false);
     }
@@ -123,15 +132,14 @@ const Dashboard = () => {
     setBillProgress(selectedService);
 
     try {
-      const token = localStorage.getItem('authToken');
+      const token = localStorage.getItem('token');
       const serviceName = billServices.find(s => s.id === selectedService)?.name;
       
       // Store bill payment as recharge record
-      const response = await fetch('http://localhost:5002/api/recharge', {
+      const response = await fetch('http://localhost:5002/api/recharge/simple', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           planName: serviceName,
@@ -326,6 +334,7 @@ const Dashboard = () => {
                       placeholder="Enter 10-digit mobile number"
                       pattern="[0-9]{10}"
                       style={{flex: 1}}
+                      maxLength="10"
                       required
                     />
                     {currentUser?.phone && rechargeForm.phoneNumber !== currentUser.phone && (

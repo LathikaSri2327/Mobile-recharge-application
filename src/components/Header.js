@@ -43,6 +43,20 @@ const Header = () => {
             >
               Home
             </Link>
+            <Link
+              to="/offers"
+              className={`nav-link ${location.pathname === '/offers' ? 'active' : ''}`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Offers
+            </Link>
+            <Link
+              to="/feedback"
+              className={`nav-link ${location.pathname === '/feedback' ? 'active' : ''}`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Feedback
+            </Link>
             {!isAuthenticated ? (
               <>
                 <Link

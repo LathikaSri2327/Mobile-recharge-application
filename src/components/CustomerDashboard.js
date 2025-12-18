@@ -54,7 +54,7 @@ const CustomerDashboard = () => {
   const fetchWalletBalance = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/wallet/balance', {
+      const response = await fetch('/api/wallet/balance', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await response.json();
@@ -67,7 +67,7 @@ const CustomerDashboard = () => {
   const fetchRechargeHistory = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/recharge/history', {
+      const response = await fetch('/api/recharge/history', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await response.json();
@@ -80,7 +80,7 @@ const CustomerDashboard = () => {
   const fetchPlans = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/plans', {
+      const response = await fetch('/api/plans', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await response.json();
@@ -123,7 +123,7 @@ const CustomerDashboard = () => {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/wallet/add', {
+      const response = await fetch('/api/wallet/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -170,7 +170,7 @@ const CustomerDashboard = () => {
     
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/bills/pay', {
+      const response = await fetch('/api/bills/pay', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -203,7 +203,7 @@ const CustomerDashboard = () => {
     
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/recharge', {
+      const response = await fetch('/api/recharge', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

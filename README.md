@@ -1,38 +1,44 @@
-# Mobile Recharge App
+# Mobile Recharge Application
 
-A full-stack mobile recharge application built with React.js and Node.js.
+A full-stack mobile recharge application built with React.js frontend and Node.js backend.
 
-## 🚀 Live Demo
+## 🚀 Features
 
-- **Frontend**: [Deploy on Netlify](https://app.netlify.com/start/deploy?repository=https://github.com/yourusername/mobile-recharge-app)
-- **Backend**: [Deploy on Render](https://render.com)
+### Frontend
+- **User Authentication** - Login/Register/Forgot Password
+- **Dashboard** - Role-based dashboards (Admin, Agent, Customer)
+- **Mobile Recharge** - Quick recharge with multiple operators
+- **Plan Management** - View and select recharge plans
+- **Offers Page** - Special promotional offers
+- **Feedback System** - Customer feedback collection
+- **Responsive Design** - Mobile-friendly interface
 
-## 📋 Features
-
-- User Authentication (Login/Register)
-- Mobile Recharge Plans
-- Bill Payments
-- Wallet Management
-- Admin Dashboard
-- Agent Portal
-- Transaction History
+### Backend
+- **RESTful API** - Complete API with authentication
+- **User Management** - Multi-role user system
+- **Recharge Processing** - Handle recharge transactions
+- **Plan Management** - CRUD operations for plans
+- **Feedback Collection** - Store and retrieve feedback
+- **MongoDB Integration** - Database operations
+- **JWT Authentication** - Secure token-based auth
 
 ## 🛠️ Tech Stack
 
-**Frontend:**
-- React.js
-- React Router
-- Axios
-- React Toastify
+### Frontend
+- React.js 18
+- React Router DOM
+- Axios for API calls
+- Framer Motion for animations
+- CSS3 with responsive design
 
-**Backend:**
-- Node.js
-- Express.js
-- MongoDB
-- JWT Authentication
-- bcryptjs
+### Backend
+- Node.js with Express.js
+- MongoDB with Mongoose
+- JWT for authentication
+- bcryptjs for password hashing
+- CORS for cross-origin requests
 
-## 🏃‍♂️ Quick Start
+## 📦 Installation
 
 ### Prerequisites
 - Node.js (v18+)
@@ -40,90 +46,79 @@ A full-stack mobile recharge application built with React.js and Node.js.
 - Git
 
 ### Local Development
+```bash
+# Clone repository
+git clone https://github.com/LathikaSri2327/Mobile-recharge-application-1.git
+cd Mobile-recharge-application-1
 
-1. **Clone Repository**
-   ```bash
-   git clone https://github.com/yourusername/mobile-recharge-app.git
-   cd mobile-recharge-app
-   ```
+# Install frontend dependencies
+npm install
 
-2. **Backend Setup**
-   ```bash
-   cd backend
-   npm install
-   cp .env.example .env
-   # Update .env with your MongoDB URI
-   npm start
-   ```
+# Install backend dependencies
+cd backend
+npm install
 
-3. **Frontend Setup**
-   ```bash
-   # In new terminal
-   npm install
-   npm start
-   ```
+# Start MongoDB service
+net start MongoDB
+
+# Start backend server
+npm start
+
+# Start frontend (in new terminal)
+cd ..
+npm start
+```
 
 ## 🌐 Deployment
 
-### Backend (Render)
-1. Connect GitHub repository to Render
-2. Set root directory to `backend`
-3. Add environment variables:
-   ```
-   NODE_ENV=production
-   MONGODB_URI=your_mongodb_atlas_uri
-   JWT_SECRET=your_jwt_secret
-   ```
+### Render Deployment
+1. **Backend**: Deploy as Web Service
+2. **Frontend**: Deploy as Static Site
+3. **Database**: Use MongoDB Atlas
 
-### Frontend (Netlify)
-1. Connect GitHub repository to Netlify
-2. Build settings:
-   - Build command: `npm run build`
-   - Publish directory: `build`
-3. Environment variables:
-   ```
-   REACT_APP_API_URL=https://your-backend.onrender.com/api
-   ```
+See `SEPARATE_DEPLOYMENT.md` for detailed instructions.
 
-## 📁 Project Structure
+## 📱 Usage
 
-```
-mobile-recharge-app/
-├── backend/                 # Node.js backend
-│   ├── controllers/        # Route controllers
-│   ├── middleware/         # Custom middleware
-│   ├── models/            # MongoDB models
-│   ├── routes/            # API routes
-│   └── server.js          # Entry point
-├── src/                   # React frontend
-│   ├── components/        # Reusable components
-│   ├── pages/            # Page components
-│   ├── services/         # API services
-│   └── utils/            # Utility functions
-└── public/               # Static assets
-```
+### User Roles
+- **Customer**: Recharge mobile, view history, submit feedback
+- **Agent**: Process customer recharges, view statistics
+- **Admin**: Manage users, plans, view all data and feedback
 
-## 🔧 Environment Variables
+### Default Ports
+- Frontend: `http://localhost:3000`
+- Backend: `http://localhost:5002`
 
-### Backend (.env)
-```
+## 🔧 Configuration
+
+### Environment Variables
+```bash
+# Backend (.env)
 MONGODB_URI=mongodb://localhost:27017/mobile-recharge
 PORT=5002
-JWT_SECRET=your-secret-key
+JWT_SECRET=your-jwt-secret
+NODE_ENV=development
 ```
 
-### Frontend (.env.production)
-```
-REACT_APP_API_URL=https://your-backend.onrender.com/api
-```
+## 📊 API Endpoints
 
-## 📝 API Endpoints
-
-- `POST /api/auth/login` - User login
+### Authentication
 - `POST /api/auth/register` - User registration
-- `GET /api/plans` - Get recharge plans
+- `POST /api/auth/login` - User login
+- `POST /api/auth/forgot-password` - Password reset
+
+### Recharge
 - `POST /api/recharge` - Process recharge
-- `GET /api/wallet/balance` - Get wallet balance
+- `GET /api/recharge/history` - Get recharge history
+
+### Plans
+- `GET /api/plans` - Get all plans
+- `POST /api/plans` - Create plan (Admin)
+- `PUT /api/plans/:id` - Update plan (Admin)
+
+### Feedback
+- `POST /api/feedback` - Submit feedback
+- `GET /api/feedback` - Get all feedback (Admin)
 
 ## 🤝 Contributing
 
@@ -137,6 +132,14 @@ REACT_APP_API_URL=https://your-backend.onrender.com/api
 
 This project is licensed under the MIT License.
 
-## 🆘 Support
+## 👥 Author
 
-For support, email support@example.com or create an issue on GitHub.
+**Lathika Sri**
+- GitHub: [@LathikaSri2327](https://github.com/LathikaSri2327)
+
+## 🙏 Acknowledgments
+
+- React.js community
+- Node.js ecosystem
+- MongoDB documentation
+- Render deployment platform

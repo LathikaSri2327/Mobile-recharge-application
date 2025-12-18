@@ -65,6 +65,7 @@ jspm_packages/
 
 # Nuxt.js build / generate output
 .nuxt
+dist
 
 # Gatsby files
 .cache/
@@ -93,21 +94,3 @@ temp/
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# Deployment files (not needed for Netlify)
-*.bat
-test-*.js
-check-system.js
-quick-start.bat
-start-*.bat
-setup.bat
-
-# Documentation files (optional)
-BUTTON_TEST_RESULTS.md
-CONNECTION_TEST.md
-TROUBLESHOOTING.md
-RENDER_FIX.md
-GITHUB_DEPLOY.md
-
-# Backend files (not needed for frontend deployment)
-backend/

@@ -8,16 +8,9 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-      - key: MONGODB_URI
-        fromDatabase:
-          name: mobile-recharge-db
-          property: connectionString
-      - key: JWT_SECRET
-        generateValue: true
       - key: PORT
         value: 10000
-
-databases:
-  - name: mobile-recharge-db
-    databaseName: mobile-recharge
-    user: admin
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true

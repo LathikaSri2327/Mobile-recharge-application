@@ -79,6 +79,7 @@ const HomePage = () => {
               { title: 'Instant Recharge', desc: 'Lightning fast processing' },
               { title: 'Secure Payment', desc: 'Bank-level security' },
               { title: 'Best Offers', desc: 'Exclusive cashback deals' },
+              { title: 'All Types of Bill Payments', desc: 'Electricity, Water, Gas & More' },
               { title: '24/7 Support', desc: 'Round the clock assistance' }
             ].map((feature, index) => (
               <motion.div

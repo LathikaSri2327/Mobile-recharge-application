@@ -1,0 +1,284 @@
+.offers-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #1a365d 100%);
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+}
+
+.offers-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.offers-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.offers-title {
+  font-size: 4rem;
+  font-weight: 900;
+  background: linear-gradient(45deg, #f6ad55, #ed8936, #dd6b20);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  letter-spacing: 2px;
+}
+
+.offers-subtitle {
+  font-size: 1.5rem;
+  color: #cbd5e0;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.offers-badges {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  background: linear-gradient(45deg, #2b6cb0, #3182ce);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow: 0 8px 25px rgba(43, 108, 176, 0.3);
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.badge:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(43, 108, 176, 0.4);
+}
+
+.badge.green { background: linear-gradient(45deg, #38a169, #48bb78); }
+.badge.blue { background: linear-gradient(45deg, #3182ce, #4299e1); }
+.badge.purple { background: linear-gradient(45deg, #805ad5, #9f7aea); }
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.offer-card {
+  background: linear-gradient(145deg, #ffffff, #f7fafc);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 40px rgba(26, 32, 44, 0.15);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  border: 2px solid transparent;
+}
+
+.offer-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(26, 32, 44, 0.25);
+  border-color: #ed8936;
+}
+
+.offer-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #f6ad55, #ed8936, #3182ce, #38a169);
+}
+
+.discount-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: linear-gradient(45deg, #e53e3e, #f56565);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 8px 20px rgba(229, 62, 62, 0.4);
+  transform: rotate(15deg);
+}
+
+.offer-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #2d3748;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.offer-description {
+  font-size: 1.1rem;
+  color: #4a5568;
+  margin-bottom: 2rem;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.promo-section {
+  background: linear-gradient(135deg, #f7fafc, #edf2f7);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 2px dashed #cbd5e0;
+}
+
+.promo-label {
+  font-size: 0.9rem;
+  color: #718096;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.promo-code-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.promo-code {
+  background: linear-gradient(45deg, #2d3748, #4a5568);
+  color: #f6ad55;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  border: 2px solid #ed8936;
+}
+
+.copy-btn {
+  background: linear-gradient(45deg, #ed8936, #dd6b20);
+  color: white;
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+  background: linear-gradient(45deg, #dd6b20, #c05621);
+  transform: scale(1.05);
+}
+
+.validity {
+  text-align: center;
+  background: rgba(49, 130, 206, 0.1);
+  color: #3182ce;
+  padding: 0.8rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.use-offer-btn {
+  width: 100%;
+  background: linear-gradient(45deg, #2d3748, #4a5568);
+  color: #f6ad55;
+  border: 2px solid #ed8936;
+  padding: 1.2rem;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.use-offer-btn:hover {
+  background: linear-gradient(45deg, #ed8936, #dd6b20);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(237, 137, 54, 0.4);
+}
+
+.cta-section {
+  text-align: center;
+  background: rgba(45, 55, 72, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  padding: 3rem;
+  border: 1px solid rgba(237, 137, 54, 0.3);
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #f6ad55, #ed8936);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.cta-description {
+  font-size: 1.3rem;
+  color: #cbd5e0;
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  padding: 1.2rem 2.5rem;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cta-btn.primary {
+  background: linear-gradient(45deg, #ed8936, #dd6b20);
+  color: white;
+}
+
+.cta-btn.secondary {
+  background: rgba(45, 55, 72, 0.8);
+  color: #f6ad55;
+  border: 2px solid #ed8936;
+}
+
+.cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+  .offers-title { font-size: 2.5rem; }
+  .offers-grid { grid-template-columns: 1fr; }
+  .offers-badges { flex-direction: column; align-items: center; }
+  .cta-buttons { flex-direction: column; }
+}

@@ -8,6 +8,8 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import Dashboard from './pages/Dashboard';
+import Offers from './pages/Offers';
+import Feedback from './pages/Feedback';
 import ProtectedRoute from './components/ProtectedRoute';
 import { authService } from './services/authService';
 import './styles/App.css';
@@ -21,6 +23,8 @@ function App() {
         <main className="main-content">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/offers" element={<Offers />} />
+            <Route path="/feedback" element={<Feedback />} />
             <Route 
               path="/login" 
               element={

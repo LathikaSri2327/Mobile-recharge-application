@@ -1,98 +1,84 @@
-# Deployment Guide - Mobile Recharge App
+# Mobile Recharge App - Render Deployment Guide
 
-## Backend Deployment (Render)
+## 🚀 Quick Deploy to Render
 
-### 1. Create Render Account
-- Go to [render.com](https://render.com)
-- Sign up with GitHub
+### Option 1: Using render.yaml (Recommended)
+1. Push code to GitHub repository
+2. Connect GitHub repo to Render
+3. Render will auto-detect `render.yaml` and deploy both services
 
-### 2. Deploy Backend
+### Option 2: Manual Setup
+
+#### Backend Deployment
 1. **Create Web Service**
-   - Connect GitHub repository
-   - Select `backend` folder as root directory
-   - Build Command: `npm install`
-   - Start Command: `npm start`
+   - Environment: Node.js
+   - Build Command: `cd backend && npm install`
+   - Start Command: `cd backend && npm start`
 
 2. **Environment Variables**
    ```
    NODE_ENV=production
-   MONGODB_URI=<your-mongodb-atlas-uri>
-   JWT_SECRET=<generate-secure-secret>
    PORT=10000
+   MONGODB_URI=<your-mongodb-connection-string>
+   JWT_SECRET=<generate-random-secret>
    ```
 
-3. **MongoDB Atlas Setup**
-   - Create account at [mongodb.com/atlas](https://mongodb.com/atlas)
-   - Create cluster
-   - Get connection string
-   - Add to MONGODB_URI
+3. **Database Setup**
+   - Create MongoDB database on Render
+   - Copy connection string to MONGODB_URI
 
-### 3. Backend URL
-```
-https://mobile-recharge-backend.onrender.com
-```
+#### Frontend Deployment
+1. **Create Static Site**
+   - Build Command: `npm install && npm run build`
+   - Publish Directory: `build`
 
-## Frontend Deployment Options
-
-### Option 1: Netlify (Recommended)
-1. Connect GitHub repository
-2. Build settings:
-   - Build command: `npm run build`
-   - Publish directory: `build`
-3. Environment variables:
+2. **Environment Variables**
    ```
-   REACT_APP_API_URL=https://mobile-recharge-backend.onrender.com/api
+   REACT_APP_API_URL=https://your-backend-url.onrender.com/api
    ```
 
-### Option 2: Render Static Site
-1. Create Static Site
-2. Connect repository
-3. Build command: `npm run build`
-4. Publish directory: `build`
+## 📋 Pre-deployment Checklist
 
-## Post-Deployment Steps
+### Backend Updates Needed:
+- ✅ Update CORS origins for production
+- ✅ Set production MongoDB URI
+- ✅ Configure environment variables
+- ✅ Update port configuration
 
-1. **Update CORS Origins**
-   - Add frontend URL to backend CORS configuration
+### Frontend Updates Needed:
+- ✅ Update API base URL for production
+- ✅ Build optimization
+- ✅ Environment configuration
 
-2. **Test Endpoints**
-   ```bash
-   curl https://mobile-recharge-backend.onrender.com/health
-   ```
+## 🔧 Production Configuration
 
-3. **Seed Database** (Optional)
-   ```bash
-   # Run seed scripts via Render console
-   npm run seed
-   ```
-
-## Environment Variables Summary
-
-### Backend (.env)
-```
-NODE_ENV=production
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/mobile-recharge
-JWT_SECRET=your-super-secure-jwt-secret-key
-PORT=10000
+### Update Backend CORS:
+```javascript
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://your-frontend-url.onrender.com'
+];
 ```
 
-### Frontend (.env.production)
+### Update Frontend API URL:
+```javascript
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5002/api';
 ```
-REACT_APP_API_URL=https://mobile-recharge-backend.onrender.com/api
-GENERATE_SOURCEMAP=false
-```
 
-## Troubleshooting
+## 🌐 MongoDB Setup
+1. Use MongoDB Atlas (free tier)
+2. Create cluster and database
+3. Get connection string
+4. Add to Render environment variables
 
-### Common Issues:
-1. **CORS Errors**: Update allowed origins in server.js
-2. **Database Connection**: Check MongoDB Atlas IP whitelist
-3. **Build Failures**: Ensure Node.js version compatibility
+## 📱 Post-Deployment Testing
+1. Test user registration/login
+2. Test recharge functionality
+3. Test admin dashboard
+4. Test feedback system
+5. Verify all API endpoints
 
-### Logs:
-- Backend: Render dashboard → Service → Logs
-- Frontend: Netlify dashboard → Site → Functions
-
-## URLs After Deployment
-- **Backend API**: https://mobile-recharge-backend.onrender.com
-- **Frontend**: https://mobile-recharge-app.netlify.app (or your custom domain)
+## 🔗 Useful Links
+- [Render Documentation](https://render.com/docs)
+- [MongoDB Atlas](https://www.mongodb.com/atlas)
+- [Node.js Deployment Guide](https://render.com/docs/deploy-node-express-app)
