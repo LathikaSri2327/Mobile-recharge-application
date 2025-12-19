@@ -23,10 +23,10 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect(process.env.MONGODB_URI || process.env.DATABASE_URL || 'mongodb://localhost:27017/mobile-recharge')
+mongoose.connect(process.env.MONGO_URI || process.env.MONGODB_URI || process.env.DATABASE_URL || 'mongodb://localhost:27017/mobile-recharge')
   .then(() => {
     console.log('✅ MongoDB connected successfully');
-    console.log('📊 Database:', process.env.MONGODB_URI || 'mongodb://localhost:27017/recharge-app');
+    console.log('📊 Database:', process.env.MONGO_URI || process.env.MONGODB_URI || 'mongodb://localhost:27017/recharge-app');
   })
   .catch(err => {
     console.error('❌ MongoDB connection failed:', err.message);
